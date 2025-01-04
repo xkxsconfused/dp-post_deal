@@ -10,6 +10,16 @@ from matplotlib import font_manager
 
 data_dirs = []
 
+dir_al = ""
+#寻找主动学习目录中的数据
+for i in range(20):
+    num_iter = '{:06d}'.format(i)
+    for j in range(17):
+        num_data = '{:03d}'.format(j)
+        dir_temp = f"{dir_al}/iter.{num_iter}/02.fp/data.{num_data}"
+        if os.path.exists(dir_temp):
+            data_dirs.append(dir_temp)
+
 # DP势函数
 dp_dir =  ""
 
