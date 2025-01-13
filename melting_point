@@ -80,10 +80,10 @@ def rdf_file(filename,index):
     start_row = head_row+index*(n_row+1)+1
     rdf_data = np.loadtxt(filename, skiprows=start_row, max_rows=n_row)
     return  rdf_data[:,[1,2]]
-list_structure = ["01-Bi_c","02-Bi_m","03-Bi_t","04-Pb_c","05-Pb_h","06-PbBi","07-PbBi3","08-Pb4Bi"]
+
 # "${N} ${T} ${V} ${pote} ${Etotal} ${Press}"
-name = "08-Pb4Bi-2"
-dir_data = f"/home/changsk/project/01-PbBi/05-lps/05-melting_points/dp-555/{name}/"
+name = ""
+dir_data = ""
 
 data = np.loadtxt(dir_data+'data', delimiter=" ", dtype=float,skiprows=2)
 data = ave(data)
@@ -126,5 +126,5 @@ ax2.set_ylabel(r'V(nm$^3$)',fontsize=12)
 lines1, labels1 = ax.get_legend_handles_labels()
 lines2, labels2 = ax2.get_legend_handles_labels()
 ax.legend(lines1 + lines2, labels1 + labels2, loc='upper left', prop={'size':15}, frameon=False)
-plt.savefig(f'/home/changsk/project/01-PbBi/05-lps/05-melting_points/dp-555/pic/{name}-dp-mp.png', bbox_inches='tight',dpi=300, transparent=True)
+plt.savefig('', bbox_inches='tight',dpi=300, transparent=True)
 
