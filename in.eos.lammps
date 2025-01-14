@@ -1,0 +1,30 @@
+units           metal
+boundary        p p p
+atom_style      atomic
+
+variable        i loop 20#20次循环
+# variable        x equal 0.89+0.01*$i #晶格常数
+
+neighbor        1.0 bin
+
+read_data       ./str/${i}.data
+
+mass            1 208.98 # Bi
+
+variable        n equal count(all) #原子的总数
+variable        P equal pe/$n
+variable        v equal vol
+variable        e equal pe
+pair_style      deepmd  /home/changsk/project/01-PbBi/05-lps/00-potentials/graph-compress.pb
+pair_coeff      * * Bi
+
+thermo          100
+thermo_style    custom step temp pe press vol density lx ly lz
+dump            2 all custom 100 dump.xyz id type x y z 
+
+run             0
+
+print            "@@ Volume $v E $e"
+clear            #清除这次的数据
+next             i
+jump             input.lammps #循环
